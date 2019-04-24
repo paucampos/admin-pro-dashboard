@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
-import { retry } from "rxjs/operators";
+import { Observable, Subscriber } from "rxjs";
+import { retry, map } from "rxjs/operators";
 
 @Component({
   selector: "app-rxjs",
@@ -9,12 +9,7 @@ import { retry } from "rxjs/operators";
 })
 export class RxjsComponent implements OnInit {
   constructor() {
-    // pipe con operador retry
     this.regresaObservable()
-      .pipe(
-        // recibe como argumento el número de reintentos
-        retry(2)
-      )
       .subscribe(
         numero => console.log("subscribe", numero),
         error => console.log("Error en el obs: ", error),
@@ -25,21 +20,24 @@ export class RxjsComponent implements OnInit {
   ngOnInit() {}
 
   regresaObservable(): Observable<number> {
-    return new Observable(observer => {
+    return new Observable((observer: Subscriber<any>) => {
       let contador = 0;
+
       let intervalo = setInterval(() => {
         contador++;
+        const salida = {
+          valor: contador
+        }
         // notifica que llegó el contador
-        observer.next(contador);
+        observer.next(salida);
         if (contador === 3) {
           clearInterval(intervalo);
           observer.complete();
         }
-        if (contador === 2) {
-          // clearInterval(intervalo);
-          observer.error("Hubo un error, solo llegó a 2");
-        }
       }, 1000);
-    });
+    }).pipe(
+      // map transforma la info como quiera
+      map( resp => resp.valor)
+    );
   }
 }
