@@ -23,7 +23,7 @@ export class PromesasComponent implements OnInit {
     return new Promise( (resolve, reject) => {
       let contador = 0;
       let intervalo = setInterval( () => {
-        contador += 1;
+        contador ++;
         console.log(contador);
         if (contador === 3) {
           resolve(true);
