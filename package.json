@@ -25,10 +25,11 @@
     "core-js": "^2.5.4",
     "ng2-charts": "^2.2.2",
     "rxjs": "~6.2.0",
+    "sweetalert": "^2.1.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.8.0",
+    "@angular-devkit/build-angular": "^0.13.9",
     "@angular/cli": "~6.2.5",
     "@angular/compiler-cli": "^7.2.12",
     "@angular/language-service": "^6.1.0",
