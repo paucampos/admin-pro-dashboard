@@ -13,6 +13,12 @@ export class UsuarioService {
   constructor(public http: HttpClient) { }
 
   login(usuario: Usuario, recuerdame = false) {
+    if(recuerdame) {
+      localStorage.setItem('email', usuario.email);
+    } else {
+      localStorage.removeItem('email');
+    }
+
     let url = `${URL_SERVICIOS}/login`;
 
     return this.http.post(url, usuario).pipe(
