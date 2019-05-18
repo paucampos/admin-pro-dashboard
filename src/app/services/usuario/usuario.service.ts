@@ -14,8 +14,16 @@ export class UsuarioService {
 
   login(usuario: Usuario, recuerdame = false) {
     let url = `${URL_SERVICIOS}/login`;
-    
-    return this.http.post(url, usuario)
+
+    return this.http.post(url, usuario).pipe(
+      map((res: any) => {
+        localStorage.setItem('id', res.id);
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('usuario', JSON.stringify(res.usuario));
+
+        return true;
+      }
+    ))
   }
 
   crearUsuario(usuario: Usuario) {

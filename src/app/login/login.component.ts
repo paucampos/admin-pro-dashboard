@@ -30,9 +30,6 @@ export class LoginComponent implements OnInit {
     let usuario = new Usuario(null, formulario.value.email, formulario.value.password)
   
     this._usuario.login(usuario, formulario.value.recuerdame)
-    .subscribe( res => {
-      console.log(res);
-    })
-    // this.router.navigate(['/dashboard']);
+    .subscribe( res => this.router.navigate(['/dashboard']));
   }
 }
