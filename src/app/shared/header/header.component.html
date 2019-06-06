@@ -30,8 +30,12 @@
             <!-- ============================================================== -->
             <ul class="navbar-nav mr-auto">
                 <!-- This is  -->
-                <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a>
+                </li>
                 <li class="nav-item hidden-sm-down"></li>
             </ul>
             <!-- ============================================================== -->
@@ -55,7 +59,7 @@
                     <div class="dropdown-menu mailbox dropdown-menu-right animated fadeIn" aria-labelledby="2">
                         <ul>
                             <li>
-                                <div class="drop-title">You have 4 new messages</div>
+                                <div class="drop-title">Tienes 4 mensajes nuevos</div>
                             </li>
                             <li>
                                 <div class="message-center">
@@ -75,7 +79,7 @@
                                     <a href="#">
                                         <div class="user-img"> <img src="assets/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
                                         <div class="mail-contnet">
-                                            <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
+                                            <h5>Arijit Sinh</h5> <span class="mail-desc">Soy un cantante!</span> <span class="time">9:08 AM</span> </div>
                                     </a>
                                     <!-- Message -->
                                     <a href="#">
@@ -86,7 +90,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a class="nav-link text-center" href="javascript:void(0);"> <strong>See all e-Mails</strong> <i class="fa fa-angle-right"></i> </a>
+                                <a class="nav-link text-center" href="javascript:void(0);"> <strong>Ver todos los email</strong> <i class="fa fa-angle-right"></i> </a>
                             </li>
                         </ul>
                     </div>
@@ -110,19 +114,21 @@
                     <div class="dropdown-menu dropdown-menu-right animated fadeIn">
                         <ul class="dropdown-user">
                             <li>
-                                <div class="dw-user-box">
+                                <div class="dw-user-box" align="center">
                                     <div class="u-img"><img [src]="usuario.img | imagen" alt="user"></div>
                                     <div class="u-text">
                                         <h4>{{ usuario.nombre }}</h4>
-                                        <p class="text-muted">{{usuario.email}}</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a></div>
+                                        <p class="text-muted">{{usuario.email}}</p>
+                                        <a routerLinkActive="active" routerLink="/perfil" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a>
+                                    </div>
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-user"></i> Mi Perfil</a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
+                            <li><a routerLinkActive="active" routerLink="/perfil"><i class="ti-user"></i> Mi Perfil</a></li>
+                            <li><a href="#"><i class="ti-wallet"></i> Mi balance</a></li>
                             <li><a href="#"><i class="ti-email"></i> Buzón</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Configurar Cuenta</a></li>
+                            <li><a routerLinkActive="active" routerLink="/account-settings"><i class="ti-settings"></i> Configurar Cuenta</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a class="pointer" (click)="_usuario.logout()"><i class="fa fa-power-off"></i> Salir</a></li>
                         </ul>

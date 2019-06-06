@@ -12,8 +12,8 @@
                         <span class="hide-menu">{{usuario.nombre}} </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="javascript:void()">Mi Perfil</a></li>
-                        <li><a href="javascript:void()">My Balance</a></li>
+                        <li><a routerLinkActive="active" routerLink="/perfil">Mi Perfil</a></li>
+                        <li><a href="javascript:void()">Mi balance</a></li>
                         <li><a href="javascript:void()">Buzón</a></li>
                         <li><a routerLinkActive="active" routerLink="/account-settings">Configurar Cuenta</a></li>
                         <li><a (click)="_usuario.logout()" routerLink="/login">Salir</a></li>
