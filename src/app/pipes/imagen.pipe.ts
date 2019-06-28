@@ -13,29 +13,22 @@ export class ImagenPipe implements PipeTransform {
     // Sino voy a buscarla
     let url = `${URL_SERVICIOS}/img`;
 
-    // sino viene ImagenPipe, muestra una por defecto
+    // si no viene ImagenPipe, muestra una por defecto
     if (!img) {
       return url + "/usuarios/xxxx";
     }
 
-    switch (tipo) {
+    switch (tipo) {     
       case "usuario":
-          url += '/usuarios/' + img;
-          break;
-
+          return url += '/usuarios/' + img;
       case "medico":
-          url += '/medicos/' + img;
-          break;
-
+          return url += '/medicos/' + img;
       case "hospital":
-       url += '/hospitales/' + img;
-        break;
+       return url += '/hospitales/' + img;
 
       default:
-        console.log('tipo de imagen no existe, usuarios, medicos, hospitales');
-        url += "/usuarios/xxxx";
-        break;
+        alert('Tipo de imagen no existe, usuarios, medicos, hospitales');
+        return url += "/usuarios/xxxx";
     }
-    return "FUNCIONA!";
   }
 }

@@ -89,4 +89,16 @@ export class UsuarioService {
         return res.usuario;
       }));
   }
+
+  actualizarUsuario(usuario: Usuario) {
+    let url = `${URL_SERVICIOS}/usuario/${usuario._id}`;
+    url += '?token=' + this.token;
+    
+    return this.http.put(url, usuario)
+      .pipe(map((res: any) => {
+        this.guardarStorage(res.usuario._id, this.token, res.usuario);
+          alert('Usuario actualizado exitosamente ' + usuario.nombre);
+          return true;
+      }))
+  }
 }
