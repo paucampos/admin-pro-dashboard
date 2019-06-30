@@ -7,3 +7,15 @@
 .pointer {
     cursor: pointer;
 }
+
+.max-w150 {
+    max-width: 150px;
+}
+
+.min-w30 {
+    min-width: 30px;
+}
+
+.ml-25 {
+    margin-left: 25%;
+}

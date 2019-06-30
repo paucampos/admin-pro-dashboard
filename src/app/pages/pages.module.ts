@@ -19,6 +19,7 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { ProfileComponent } from './profile/profile.component';
         PagesComponent
     ],
     imports: [
+        CommonModule,
         SharedModule,
         PAGES_ROUTES,
         FormsModule,

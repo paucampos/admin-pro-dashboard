@@ -10,6 +10,7 @@ import { UsuarioService } from 'src/app/services/service.index';
 export class ProfileComponent implements OnInit {
   usuario: Usuario;
   imagenSubir: File;
+  imagenTemp: any;
 
   constructor(public _usuario: UsuarioService) {
     this.usuario = this._usuario.usuario;
@@ -29,12 +30,24 @@ export class ProfileComponent implements OnInit {
   }
 
   seleccionImagen(archivo: File) {
+    console.log(archivo);
     if (!archivo) {
       this.imagenSubir = null;
       return;
     }
 
+    if(archivo.type.indexOf('image') < 0) {
+      alert('Sólo imagenes, el archivo seleccionado no es una imagen.');
+      this.imagenSubir = null;
+      return;
+    }
+
     this.imagenSubir = archivo;
+    // Cargar preview de la imagen
+    let reader = new FileReader();
+    let urlImagenTemp = reader.readAsDataURL(this.imagenSubir);
+  
+    reader.onloadend = () => this.imagenTemp = reader.result;
   }
 
   actualizarImagen() {
