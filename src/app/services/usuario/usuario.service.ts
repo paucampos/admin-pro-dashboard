@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class UsuarioService {
   usuario: Usuario;
   token = '';
 
-  constructor(public http: HttpClient, public router: Router) {
+  constructor(public http: HttpClient, public router: Router, public _subirArchivo: SubirArchivoService) {
     this.cargarStorage();
    }
 
@@ -100,5 +101,17 @@ export class UsuarioService {
           alert('Usuario actualizado exitosamente ' + usuario.nombre);
           return true;
       }))
+  }
+
+  actualizarImagen(archivo: File, id: string) {
+    this._subirArchivo.subirArchivo(archivo, 'usuarios', id)
+      .then( (res: any) => {
+        this.usuario.img = res.elementoActualizado.img;
+        alert("Imagen Atualizada Exitósamente!");
+        this.guardarStorage(id, this.token, this.usuario);
+      })
+      .catch(res => {
+        console.log('catch', res);
+      })
   }
 }

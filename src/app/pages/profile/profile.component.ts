@@ -9,6 +9,7 @@ import { UsuarioService } from 'src/app/services/service.index';
 })
 export class ProfileComponent implements OnInit {
   usuario: Usuario;
+  imagenSubir: File;
 
   constructor(public _usuario: UsuarioService) {
     this.usuario = this._usuario.usuario;
@@ -25,6 +26,19 @@ export class ProfileComponent implements OnInit {
 
     this._usuario.actualizarUsuario(this.usuario)
     .subscribe();
+  }
+
+  seleccionImagen(archivo: File) {
+    if (!archivo) {
+      this.imagenSubir = null;
+      return;
+    }
+
+    this.imagenSubir = archivo;
+  }
+
+  actualizarImagen() {
+    this._usuario.actualizarImagen(this.imagenSubir, this.usuario._id);
   }
 
 }
