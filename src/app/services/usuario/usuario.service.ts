@@ -114,4 +114,17 @@ export class UsuarioService {
         console.log('catch', res);
       })
   }
+
+  cargarUsuarios(desde: number = 0) {
+    let url = `${URL_SERVICIOS}/usuario?desde=${desde}`;
+
+    return this.http.get(url);
+  }
+
+  buscarUsuarios(termino: string) {
+    let url = `${URL_SERVICIOS}/busqueda/coleccion/usuarios/${termino}`;
+    
+    return this.http.get(url)
+      .pipe(map((res: any) => res.usuarios));
+  }
 }

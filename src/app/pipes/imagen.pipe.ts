@@ -6,6 +6,9 @@ import { URL_SERVICIOS } from "../config/config";
 })
 export class ImagenPipe implements PipeTransform {
   transform(img: string, tipo: string = "usuario"): any {
+    if(!img) {
+      img = '';
+    }
     // Validar si la imagen es de google
     if (img.indexOf("https") >= 0) {
       return img;
