@@ -2586,6 +2586,7 @@ Buttons
 .btn {
     padding: 7px 12px;
     cursor: pointer;
+    margin: 4px;
 }
 
 .btn-group label {

@@ -14,6 +14,9 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = this._usuario.usuario;
+    if(!this.usuario.img) {
+      this.usuario.img = '';
+    }
   }
 
 }
