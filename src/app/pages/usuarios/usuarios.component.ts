@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Usuario } from '../../models/usuario.model';
 import { UsuarioService } from "src/app/services/service.index";
+import swal from 'sweetalert';
+
 
 @Component({
   selector: "app-usuarios",
@@ -25,7 +27,9 @@ export class UsuariosComponent implements OnInit {
       if (res.ok) {
         this.espera = false;
         this.totalRegistros = res.total;
+        // Orden por nombre
         this.usuarios = res.usuarios;
+        // .sort((a, b) => a.nombre.localeCompare(b.nombre));
       }
     });
   }
@@ -56,5 +60,36 @@ export class UsuariosComponent implements OnInit {
           this.espera = false;
         });
     }
+  }
+
+  eliminarUsuario(usuario: Usuario) {
+    if (usuario._id === this._usuario.usuario._id) {
+      swal("No puede eliminar a usuario", "No puedes eliminar tu mismo usuario", "error");
+      return;
+    } else {
+      swal({
+        title: '¿Estás seguro que deseas eliminar al usuario?',
+        text: `Estás a punto de eliminar el usuario "${usuario.nombre}"`,
+        icon:'warning',
+        dangerMode: true,
+        buttons: ['Cancelar', 'Eliminar'],
+      })
+      .then(eliminar => {
+        console.log(eliminar);
+        if (eliminar) {
+          this._usuario.eliminarUsuario(usuario._id)
+          .subscribe( res => {
+            console.log(res);
+            this.cargarUsuarios();
+          });          
+        }
+      });
+
+    }
+  }
+
+  modificarUsuario(usuario: Usuario) {
+    this._usuario.actualizarUsuario(usuario)
+    .subscribe();
   }
 }

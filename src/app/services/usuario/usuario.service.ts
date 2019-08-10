@@ -5,6 +5,7 @@ import { URL_SERVICIOS } from '../../config/config';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
+import swal from 'sweetalert';
 
 @Injectable({
   providedIn: 'root'
@@ -97,9 +98,13 @@ export class UsuarioService {
     
     return this.http.put(url, usuario)
       .pipe(map((res: any) => {
-        this.guardarStorage(res.usuario._id, this.token, res.usuario);
-          alert('Usuario actualizado exitosamente ' + usuario.nombre);
-          return true;
+        if (usuario._id === this.usuario._id){
+          let usuarioDB: Usuario = res.usuario;
+          this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+        }
+        swal("Usuario actualizado exitósamente", usuario.nombre, 'success' );
+        
+        return true;
       }))
   }
 
@@ -126,5 +131,16 @@ export class UsuarioService {
     
     return this.http.get(url)
       .pipe(map((res: any) => res.usuarios));
+  }
+
+  eliminarUsuario(id: string) {
+    let url = `${URL_SERVICIOS}/usuario/${id}`;
+    url += '?token=' + this.token;
+    
+    return this.http.delete(url)
+    .pipe(map( res => {
+        swal('Usuario eliminado', 'El usuario ha sido eliminado exitósamente.', 'success');
+        return true;
+    }));
   }
 }
