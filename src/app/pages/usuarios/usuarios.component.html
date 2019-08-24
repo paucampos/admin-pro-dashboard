@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let usuario of usuarios">
-                            <td class="w70">
+                            <td class="w70 pointer" (click)="mostrarModal(usuario._id)">
                                 <div class="circular--portrait">
                                     <img [src]="usuario.img | imagen" />
                                 </div>
