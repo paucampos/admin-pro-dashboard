@@ -87,7 +87,7 @@ export class UsuarioService {
 
     return this.http.post(url, usuario)
       .pipe(map( (res: any) => {
-        alert('Usuario creado exitosamente ' + usuario.email);
+        swal("Usuario creado exitósamente", usuario.email, 'success' );
         return res.usuario;
       }));
   }
@@ -112,7 +112,7 @@ export class UsuarioService {
     this._subirArchivo.subirArchivo(archivo, 'usuarios', id)
       .then( (res: any) => {
         this.usuario.img = res.elementoActualizado.img;
-        alert("Imagen Atualizada Exitósamente!");
+        swal("Imagen Atualizada Exitósamente!");
         this.guardarStorage(id, this.token, this.usuario);
       })
       .catch(res => {

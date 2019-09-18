@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { UsuarioService } from 'src/app/services/service.index';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-profile',
@@ -37,7 +38,7 @@ export class ProfileComponent implements OnInit {
     }
 
     if(archivo.type.indexOf('image') < 0) {
-      alert('Sólo imagenes, el archivo seleccionado no es una imagen.');
+      swal('Sólo imagenes, el archivo seleccionado no es una imagen.');
       this.imagenSubir = null;
       return;
     }

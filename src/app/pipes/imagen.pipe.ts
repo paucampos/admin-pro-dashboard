@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from "@angular/core";
 import { URL_SERVICIOS } from "../config/config";
+import swal from 'sweetalert';
 
 @Pipe({
   name: "imagen"
@@ -30,7 +31,7 @@ export class ImagenPipe implements PipeTransform {
        return url += '/hospitales/' + img;
 
       default:
-        alert('Tipo de imagen no existe, usuarios, medicos, hospitales');
+        swal('Tipo de imagen no existe, usuarios, medicos, hospitales');
         return url += "/usuarios/xxxx";
     }
   }
