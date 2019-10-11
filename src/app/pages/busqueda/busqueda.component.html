@@ -5,23 +5,21 @@
                 <h4 class="card-title">
                     Usuarios
                 </h4>
-                <table class="table table-hover">
+                <table class="table table-hover" *ngIf="usuarios.length > 0">
                     <tbody>
-                        <tr *ngFor="let usuario of usuarios">
-                            <td class="w70 pointer">
+                        <tr *ngFor="let usuario of usuarios" class="pointer" [routerLink]="['/usuarios']">
+                            <td class="w70">
                                 <div class="circular--portrait">
-                                    <img [src]="usuario.img | imagen:'usuario'" />
+                                    <img [src]="usuario.img | imagen" />
                                 </div>
                             </td>
                             <td>{{usuario.nombre}}</td>
-                            <td>
-                                <button class="btn btn-primary">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="alert alert-info" *ngIf="usuarios.length === 0">
+                    No hay registros
+                </div>
             </div>
         </div>
     </div>
@@ -31,23 +29,21 @@
                 <h4 class="card-title">
                     Médicos
                 </h4>
-                <table class="table table-hover">
+                <table class="table table-hover" *ngIf="medicos.length > 0">
                     <tbody>
-                        <tr *ngFor="let medico of medicos">
-                            <td class="w70 pointer">
+                        <tr *ngFor="let medico of medicos" class="pointer" [routerLink]="['/medico', medico._id]">
+                            <td class="w70">
                                 <div class="circular--portrait">
                                     <img [src]="medico.img | imagen:'medico'" />
                                 </div>
                             </td>
                             <td>{{medico.nombre}}</td>
-                            <td>
-                                <button class="btn btn-primary" [routerLink]="[ '/medico', medico._id ]">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="alert alert-info" *ngIf="medicos.length === 0">
+                    No hay registros
+                </div>
             </div>
         </div>
     </div>
@@ -57,23 +53,21 @@
                 <h4 class="card-title">
                     Hospitales
                 </h4>
-                <table class="table table-hover">
+                <table class="table table-hover" *ngIf="hospitales.length > 0">
                     <tbody>
-                        <tr *ngFor="let hospital of hospitales">
+                        <tr *ngFor="let hospital of hospitales" class="pointer" [routerLink]="['/hospitales']">
                             <td class="w70 pointer">
                                 <div class="circular--portrait">
                                     <img [src]="hospital.img | imagen:'hospital'" />
                                 </div>
                             </td>
                             <td>{{hospital.nombre}}</td>
-                            <td>
-                                <button class="btn btn-primary">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="alert alert-info" *ngIf="hospitales.length === 0">
+                    No hay registros
+                </div>
             </div>
         </div>
     </div>
