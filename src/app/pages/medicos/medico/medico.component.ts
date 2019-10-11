@@ -6,6 +6,7 @@ import { HospitalService } from '../../../services/service.index';
 import { Medico } from '../../../models/medico.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalUploadService } from '../../../components/modal-upload/modal-upload.service';
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-medico",
@@ -18,7 +19,13 @@ export class MedicoComponent implements OnInit {
   medico: Medico = new Medico('', '', '', '', '');
   hospital: Hospital = new Hospital('');
 
-  constructor(public _medico: MedicoService, public _hospital: HospitalService, public _modalUpload: ModalUploadService, public router: Router, public activatedRoute: ActivatedRoute) {
+  constructor(public _medico: MedicoService, 
+    public _hospital: HospitalService, 
+    public _modalUpload: ModalUploadService,
+     public router: Router, 
+     public activatedRoute: ActivatedRoute,
+     public _location: Location
+     ) {
     this.activatedRoute.params.subscribe( params => {
       if ( params.id != 'nuevo') {
         let id = params.id;
@@ -33,6 +40,10 @@ export class MedicoComponent implements OnInit {
     .subscribe( res => {
       this.medico.img = res.elementoActualizado.img;
     });
+  }
+
+  atras(){ 
+    this._location.back();
   }
 
   buscarMedicoId(id) {
