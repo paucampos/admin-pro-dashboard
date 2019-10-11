@@ -1,42 +1,6 @@
-<!-- <div class="input-group">
+<div class="input-group">
     <img #image [src]="imageSource" class="w150" crossorigin />
 </div>
 <div>
     <img class="w150" [src]="imageDestination" />
-</div> -->
-
-
-
-
-<div class="card">
-    <div class="card-body" align="center">
-        <h4 class="card-title">Foto del usuario</h4>
-        <h6 class="card-subtitle">{{usuario.nombre}}</h6>
-        <form class="form-horizontal p-t-20">
-            <div class="form-group row">
-                <div class="col-sm-12">
-                    <div class="input-group">
-                        <img #image [src]="imageSource" class="w150" crossorigin />
-                    </div>
-                    <div>
-                        <img class="w150" [src]="imageDestination" />
-                    </div>
-                    <!-- <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="max-w150 min-w30">
-                            <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150 min-w30"> -->
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-12">
-                    <div class="input-group">
-                        <input (change)="seleccionImagen($event.target.files[0])" type="file" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row m-b-0">
-                <div class="offset-sm-3 col-sm-12">
-                    <button (click)="actualizarImagen()" [disabled]="!imagenSubir" type="button" class="btn btn-block btn-success waves-effect waves-light"><i class="fa fa-save"></i> Actualizar foto</button>
-                </div>
-            </div>
-        </form>
-    </div>
 </div>

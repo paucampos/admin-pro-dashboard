@@ -26,7 +26,7 @@ import { HospitalesComponent } from './hospitales/hospitales.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { MedicoComponent } from "./medicos/medico/medico.component";
 import { BusquedaComponent } from './busqueda/busqueda.component';
-// import { ImageCropperComponent } from './image-cropper/image-cropper.component';
+import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 
 @NgModule({
     declarations: [
@@ -46,7 +46,7 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
         MedicosComponent,
         MedicoComponent,
         BusquedaComponent,
-        // ImageCropperComponent
+        ImageCropperComponent
     ],
     exports: [
         DashboardComponent,

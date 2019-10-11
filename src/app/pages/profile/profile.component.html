@@ -40,7 +40,10 @@
                 <form class="form-horizontal p-t-20">
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <div class="input-group ml-25">
+                            <div>
+                                <image-cropper *ngIf="!imagenTemp" src="{{usuario.img | imagen}}"></image-cropper>
+                                <image-cropper *ngIf="imagenTemp" src="{{imagenTemp}}"></image-cropper>
+
                                 <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="max-w150 min-w30">
                                 <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150 min-w30">
                             </div>
