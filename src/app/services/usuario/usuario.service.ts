@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 import swal from 'sweetalert';
 import { catchError } from 'rxjs/operators';
-import { throwError, Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,26 @@ export class UsuarioService {
   ) {
     this.cargarStorage();
   }
+
+renuevaToken() {
+  let url = URL_SERVICIOS + '/login/renuevatoken';
+  url += '?token=' + this.token;
+
+  return this.http.get(url).pipe(
+    map((res: any) => {
+      this.token = res.token;
+      // Guarda en el storage el nuevo token
+      localStorage.setItem('token', this.token );
+      console.log('Token renovado');
+      return true;
+    }),
+    catchError( err => {
+      this.router.navigate(['/login']);
+      swal('No se pudo renovar token', 'No fue posible renovar token', 'error');
+      return throwError(err);
+    })
+  );
+}
 
   estaLogeado() {
     return this.token.length > 5 ? true : false;
